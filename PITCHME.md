@@ -49,8 +49,11 @@ There are 3 parts to the system:
 @ulend
 
 ---
+@snap[north-west]
 ## VCH
+@snapend
 
+@snap[west span-100]
 @ul
 - provides a secure docker REST endpoint
 	- uses certificate based authentication
@@ -60,6 +63,7 @@ There are 3 parts to the system:
 - main point of interaction with developers
 - Each developer/group/tenant gets a VCH
 @ulend
+@snapend
 
 ---
 ## Container VMs
