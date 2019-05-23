@@ -74,9 +74,11 @@ There are 3 parts to the system:
 
 @snap[midpoint span-100]
 When you deploy a container like this:
+
 ```
 docker run -d -p 80:80 --name hi-there nginx
 ```
+
 you get a stateless VM that starts up your container
 
 Every container get another VM.
