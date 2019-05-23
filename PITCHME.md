@@ -39,14 +39,16 @@ There are 3 parts to the system:
 
 ---
 @snap[north-west]
-##VIC appliance
+## VIC appliance
 @snapend
 
+@snap[west span-100]
 @ul
 - deploys VCH hosts
 - provides a private docker image registry with RBAC based on the concept of Projects
 - can be used by developers to deploy containers graphically but this is not the prefered way to deploy containers
 @ulend
+@snapend
 
 ---
 @snap[north-west]
@@ -66,8 +68,11 @@ There are 3 parts to the system:
 @snapend
 
 ---
+@snap[north-west]
 ## Container VMs
+@snapend
 
+@snap[midpoint span-100]
 When you deploy a container like this:
 ```
 docker run -d -p 80:80 --name hi-there nginx
@@ -75,9 +80,12 @@ docker run -d -p 80:80 --name hi-there nginx
 you get a stateless VM that starts up your container
 
 Every container get another VM.
+@snapend
 
 ---
-## Networking
+@snap[north span-50]
+# Networking
+@snapend
 
 There are 2 ways that a VM can communicate with the outside world in VIC
 
@@ -85,7 +93,9 @@ There are 2 ways that a VM can communicate with the outside world in VIC
 2) Direct
 
 ---
-# NAT/Bridge
+@snap[north-west]
+## NAT/Bridge
+@snapend
 
 Each container VM gets an interface on a bridge network so that it can privately communicate with other containers managed by the same VCH and with the VCH itself.
 
