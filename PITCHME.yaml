@@ -1,3 +1,4 @@
 theme: moon
 theme-override: assets/css/custom.css
 controls-layout: edges
+layout: center-left

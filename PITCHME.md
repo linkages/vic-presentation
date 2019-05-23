@@ -3,10 +3,12 @@
 ---
 # Author
 
+@ul[](false)
 - Eli Ben-Shoshan
 - ebs@ufl.edu
 - @linkages
 - last updated: 2019/05/22
+@ulend
 
 ---
 ## What is it?
@@ -17,11 +19,9 @@ vSphere integrated containers provides a simple to consume docker environment an
 ## Why?
 
 @ul
-
 - quick to deploy
 - easy for developers to use
 - leverages native vSphere functionality
-
 @ulend
 
 ---
@@ -30,11 +30,9 @@ vSphere integrated containers provides a simple to consume docker environment an
 There are 3 parts to the system:
 
 @ol
-
 - VIC Appliance
 - VIC Container Host - VCH
 - Container VMs
-
 @olend
 
 ---
@@ -157,9 +155,9 @@ The NAT network will be called ```bridge```
 ## Three demos
 
 @ol[](false)
-1) Deploy stateless containers
-2) Deploy stateful containers
-3) Deploy containers using docker-compose
+- Deploy stateless containers
+- Deploy stateful containers
+- Deploy containers using docker-compose
 @olend
 
 ---
