@@ -72,6 +72,7 @@ There are 3 parts to the system:
 ## Container VMs
 @snapend
 
+@snap[west]
 When you deploy a container like this:
 
 ```
@@ -81,6 +82,7 @@ docker run -d -p 80:80 --name hi-there nginx
 you get a stateless VM that starts up your container
 
 Every container is another VM.
+@snapend
 
 ---
 @snap[north span-50]
