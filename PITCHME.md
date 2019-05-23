@@ -74,7 +74,7 @@ There are 3 parts to the system:
 
 When you deploy a container like this:
 
-```
+```bash
 docker run -d -p 80:80 --name hi-there nginx
 ```
 
@@ -90,6 +90,7 @@ Every container is another VM.
 @snap[midpoint]
 There are 2 ways that a VM can communicate with the outside world in VIC
 
+@ol[](false)
 1) NAT/Bridge
 2) Direct
 @snapend
@@ -99,16 +100,13 @@ There are 2 ways that a VM can communicate with the outside world in VIC
 ## NAT/Bridge
 @snapend
 
-@snap[west span-100]
 Each container VM gets an interface on a bridge network so that it can privately communicate with other containers managed by the same VCH and with the VCH itself.
 
 In NAT mode, the container ports are forwarded through the VCH like this:
 
-```
+```bash
 Client <--> VCH:80 <--> Container:8080
 ```
-
-@snapend
 
 ---
 @snap[north-west]
@@ -134,7 +132,7 @@ When a container is deployed, the next available IP in that range is statically 
 
 The network must be explicitly requested when deploying a container like this:
 
-```
+```bash
 docker run -d -p 80:80 --network public --name hi-there nginx
 ```
 
@@ -145,7 +143,7 @@ docker run -d -p 80:80 --network public --name hi-there nginx
 
 To get a list of networks available to use do this:
 
-```
+```bash
 docker network ls 
 ```
 
@@ -171,7 +169,7 @@ You will be given the CA and certificates for your VCH in a secure fashion ( TBD
 
 You then need to setup environment varialbes that docker cli will use:
 
-```
+```bash
 export DOCKER_TLS_VERIFY=1
 export DOCKER_CERT_PATH=/home/eli/src/vic/1.5.2/vic/vch-1.infr.ufl.edu
 export DOCKER_HOST=vch-1.infr.ufl.edu:2376
@@ -185,7 +183,7 @@ export COMPOSE_TLS_VERSION=TLSv1_2
 
 Deploy containers:
 
-```
+```bash
 for i in 1 2 3; do
 	docker run -d -p 80:80 --network public --name hello${i} nginx
 done;
@@ -197,7 +195,7 @@ done;
 @snapend
 
 Get IP addresses:
-```
+```bash
 for i in 1 2 3; do
 	docker container inspect hello${i} | grep IPAddress | tail -n 1;
 done;
@@ -209,7 +207,7 @@ done;
 @snapend
 
 Stop and remove:
-```
+```bash
 for i in 1 2 3; do
     docker container stop hello${i};
     docker container rm hello${i};
@@ -223,7 +221,7 @@ done;
 
 Create the volumes:
 
-```
+```bash
 for i in 1 2 3; do
 	docker volume create --opt VolumeStore=ds --name hello${i};
 done;
@@ -237,13 +235,13 @@ done;
 Putting stuff in a volume is "hard".
 First deploy a busybox container with an attached volume:
 
-```
+```bash
 docker run -d -v hello1:/stuff --name truck busybox
 ```
 
 Then copy over files to that container:
 
-```
+```bash
 docker cp ./local-file truck:/stuff/dest-file
 ```
 
@@ -253,7 +251,7 @@ docker cp ./local-file truck:/stuff/dest-file
 @snapend
 
 Then delete the busybox container:
-```
+```bash
 docker rm truck
 ```
 
@@ -263,7 +261,7 @@ docker rm truck
 @snapend
 
 To test that the files are there run this:
-```
+```bash
 docker run -it -v hello1:/stuff --rm busybox /bin/bash
 ```
 
@@ -273,7 +271,7 @@ docker run -it -v hello1:/stuff --rm busybox /bin/bash
 @snapend
 
 To remove the volume:
-```
+```bash
 docker volume rm hello1
 ```
 
