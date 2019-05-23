@@ -216,7 +216,7 @@ done;
 Create the volumes:
 
 ```bash
-	docker volume create --opt VolumeStore=ds --name hello1;
+	docker volume create --opt VolumeStore=ds --opt Capacity=1G --name hello1;
 ```
 
 ---
