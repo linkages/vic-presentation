@@ -1,5 +1,6 @@
-# Introduction to: vSphere Integrated Containers
-
+# Getting started with
+## vSphere Integrated Containers
+ 
 ---
 # Author
 
@@ -165,10 +166,19 @@ You then need to setup environment varialbes that docker cli will use:
 
 ```bash
 export DOCKER_TLS_VERIFY=1
-export DOCKER_CERT_PATH=/home/eli/src/vic/1.5.2/vic/vch-1.infr.ufl.edu
-export DOCKER_HOST=vch-1.infr.ufl.edu:2376
+export DOCKER_CERT_PATH=<path to certs>
+export DOCKER_HOST=<FQDN>:2376
 export COMPOSE_TLS_VERSION=TLSv1_2
 ```
+
+---
+@snap[north-west]
+## Stateless containers
+@snapend
+
+Containers by default save any changes to the their filesystems to a layer that is owned by that container.
+
+When that container removed, all the layers are removed as well.
 
 ---
 @snap[north-west]
@@ -207,6 +217,16 @@ for i in 1 2 3; do
     docker container rm hello${i};
 done;
 ```
+
+---
+@snap[north-west]
+## Stateful containers
+@snapend
+
+If you need to keep the work that is created in a container, then you attach a volume to a filesystem path
+within the container and have it write to it. This can be used for things like database containers.
+
+That volume is independant of the lifecycle of the container.
 
 ---
 @snap[north-west]
@@ -276,4 +296,91 @@ docker volume rm hello1
 ## docker-compose
 @snapend
 
+docker-compose is a tool that:
+
+@ul
+- gives you a concise way of defining all the components for a container in a single file
+- lifecycle state
+- scaling a container
+@ulend
+
+---
+@snap[north-west]
+## docker-compose
+@snapend
+
+The first step is to create a docker-compose.yml file
+
 ---?include=assets/code/docker-compose.md
+
+---
+@snap[north-west]
+## docker-compose
+@snapend
+
+Then you use docker-compose to start the service:
+
+```
+docker-compose up -d
+```
+
+---
+@snap[north-west]
+## docker-compose
+@snapend
+
+You can check the state of the containers with:
+
+```
+docker-compose ps
+```
+
+---
+@snap[north-west]
+## docker-compose
+@snapend
+
+You can stop your containers with:
+
+```
+docker-compose stop
+```
+
+---
+@snap[north-west]
+## docker-compose
+@snapend
+
+You can destroy your containers with:
+
+```
+docker-compose down
+```
+
+---
+@snap[north-west]
+## docker-compose
+@snapend
+
+You can also update and restart your containers with:
+
+```
+docker-compose pull
+docker-compose down
+docker-compose up -d
+```
+
+**Be careful with this**
+
+If your container has state this will destroy it with the down command
+
+---
+@snap[north-west]
+## docker-compose
+@snapend
+
+You can also scale your container if the docker-compose file is written correctly with this:
+
+```
+docker-compose up --scale <service>=<number> -d
+```

@@ -1,0 +1,12 @@
+version: "2.4"
+services:
+  hello:
+    image: nginx
+    ports:
+      - "80:80"
+    scale: 3
+
+networks:
+  default:
+    external:
+      name: public
