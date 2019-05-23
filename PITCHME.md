@@ -81,17 +81,14 @@ you get a stateless VM that starts up your container
 Every container is another VM.
 
 ---
-@snap[north span-50]
 ## Networking
-@snapend
 
-@snap[midpoint]
 There are 2 ways that a VM can communicate with the outside world in VIC
 
 @ol[](false)
-1) NAT/Bridge
-2) Direct
-@snapend
+- NAT/Bridge
+- Direct
+@olend
 
 ---
 @snap[north-west]
@@ -111,13 +108,11 @@ Client <--> VCH:80 <--> Container:8080
 ## Nat/Bridge
 @snapend
 
-@snap[west span-100]
-When the container makes outbound requests, they are NAT'ed through the VCH
+When the container makes outbound requests, they are NAT'ed through the VCH.
 
-This is the default method that is used when deploying a container
+This is the default method that is used when deploying a container.
 
-This is **NOT** the preffered method for container networking
-@snapend
+This is **NOT** the preffered method for container networking.
 
 ---
 @snap[north-west]
