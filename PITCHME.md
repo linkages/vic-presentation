@@ -276,4 +276,4 @@ docker volume rm hello1
 ## docker-compose
 @snapend
 
---?include=assets/code/docker-compose.yml
+---?include=assets/code/docker-compose.md
