@@ -275,3 +275,5 @@ docker volume rm hello1
 @snap[north-west]
 ## docker-compose
 @snapend
+
+--?include=assets/code/docker-compose.yml
