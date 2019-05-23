@@ -1,3 +1,4 @@
+layout: top-left
 # Introduction to: vSphere Integrated Containers
 
 ---
