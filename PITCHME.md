@@ -72,7 +72,6 @@ There are 3 parts to the system:
 ## Container VMs
 @snapend
 
-@snap[west]
 When you deploy a container like this:
 
 ```
@@ -82,23 +81,25 @@ docker run -d -p 80:80 --name hi-there nginx
 you get a stateless VM that starts up your container
 
 Every container is another VM.
-@snapend
 
 ---
 @snap[north span-50]
-# Networking
+## Networking
 @snapend
 
+@snap[midpoint]
 There are 2 ways that a VM can communicate with the outside world in VIC
 
 1) NAT/Bridge
 2) Direct
+@snapend
 
 ---
 @snap[north-west]
 ## NAT/Bridge
 @snapend
 
+@snap[west span-100]
 Each container VM gets an interface on a bridge network so that it can privately communicate with other containers managed by the same VCH and with the VCH itself.
 
 In NAT mode, the container ports are forwarded through the VCH like this:
@@ -107,16 +108,25 @@ In NAT mode, the container ports are forwarded through the VCH like this:
 Client <--> VCH:80 <--> Container:8080
 ```
 
+@snapend
+
 ---
-# Nat/Bridge
+@snap[north-west]
+## Nat/Bridge
+@snapend
+
+@snap[west span-100]
 When the container makes outbound requests, they are NAT'ed through the VCH
 
 This is the default method that is used when deploying a container
 
 This is **NOT** the preffered method for container networking
+@snapend
 
 ---
-# Direct
+@snap[north-west]
+## Direct
+@snapend
 
 Each VCH is assigned a range of IP addresses to use for its container VMs.
 
@@ -129,7 +139,9 @@ docker run -d -p 80:80 --network public --name hi-there nginx
 ```
 
 ---
-# Direct
+@snap[north-west]
+## Direct
+@snapend
 
 To get a list of networks available to use do this:
 
@@ -142,11 +154,15 @@ The NAT network will be called ```bridge```
 
 ---
 # Demo time!
+
+---
 ## Three demos
 
+@ol[](false)
 1) Deploy stateless containers
 2) Deploy stateful containers
 3) Deploy containers using docker-compose
+@olend
 
 ---
 # But first...
@@ -163,7 +179,9 @@ export COMPOSE_TLS_VERSION=TLSv1_2
 ```
 
 ---
-# Stateless containers
+@snap[north-west]
+## Stateless containers
+@snapend
 
 Deploy containers:
 
@@ -173,12 +191,22 @@ for i in 1 2 3; do
 done;
 ```
 
+---
+@snap[north-west]
+## Stateless containers
+@snapend
+
 Get IP addresses:
 ```
 for i in 1 2 3; do
 	docker container inspect hello${i} | grep IPAddress | tail -n 1;
 done;
 ```
+
+---
+@snap[north-west]
+## Stateless containers
+@snapend
 
 Stop and remove:
 ```
@@ -189,7 +217,9 @@ done;
 ```
 
 ---
-# Stateful containers
+@snap[north-west]
+## Stateful containers
+@snapend
 
 Create the volumes:
 
@@ -198,6 +228,11 @@ for i in 1 2 3; do
 	docker volume create --opt VolumeStore=ds --name hello${i};
 done;
 ```
+
+---
+@snap[north-west]
+## Stateful containers
+@snapend
 
 Putting stuff in a volume is "hard".
 First deploy a busybox container with an attached volume:
@@ -213,17 +248,29 @@ docker cp ./local-file truck:/stuff/dest-file
 ```
 
 ---
-# Stateful containers
+@snap[north-west]
+## Stateful containers
+@snapend
 
 Then delete the busybox container:
 ```
 docker rm truck
 ```
 
+---
+@snap[north-west]
+## Stateful containers
+@snapend
+
 To test that the files are there run this:
 ```
 docker run -it -v hello1:/stuff --rm busybox /bin/bash
 ```
+
+---
+@snap[north-west]
+## Stateful containers
+@snapend
 
 To remove the volume:
 ```
@@ -231,5 +278,6 @@ docker volume rm hello1
 ```
 
 ---
-# docker-compose
-
+@snap[north-west]
+## docker-compose
+@snapend
