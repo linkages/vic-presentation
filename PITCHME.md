@@ -1,15 +1,16 @@
-@snap[north-west span-33]
 # Introduction to: vSphere Integrated Containers
-@snapend
 
 ---
-@snap[north-west span-33]
 # Author
-@snapend
+
+@ul
+
 - Eli Ben-Shoshan
 - ebs@ufl.edu
 - @linkages
 - last updated: 2019/05/22
+
+@ulend
 
 ---
 # Contents
@@ -23,17 +24,26 @@ vSphere integrated containers provides a simple to consume docker environment an
 ---
 # Why?
 
+@ul
+
 - quick to deploy
 - easy for developers to use
 - leverages native vSphere functionality
+
+@ulend
 
 ---
 # Architecture
 
 There are 3 parts to the system:
+
+@ol
+
 - VIC Appliance
 - VIC Container Host - VCH
 - Container VMs
+
+@olend
 
 ---
 # VIC appliance
