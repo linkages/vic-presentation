@@ -140,8 +140,9 @@ To get a list of networks available to use do this:
 docker network ls 
 ```
 
-When a VCH is deployed, the name for this network will be called ```public```
-The NAT network will be called ```bridge```
+When a VCH is deployed, the name for this network will be called **public**
+
+The NAT network will be called **bridge**
 
 ---
 # Demo time!
@@ -156,7 +157,7 @@ The NAT network will be called ```bridge```
 @olend
 
 ---
-# But first...
+## But first...
 
 You will be given the CA and certificates for your VCH in a secure fashion ( TBD )
 
@@ -215,9 +216,7 @@ done;
 Create the volumes:
 
 ```bash
-for i in 1 2 3; do
-	docker volume create --opt VolumeStore=ds --name hello${i};
-done;
+	docker volume create --opt VolumeStore=ds --name hello1;
 ```
 
 ---
@@ -225,7 +224,7 @@ done;
 ## Stateful containers
 @snapend
 
-Putting stuff in a volume is "hard"
+Putting stuff in a volume is *hard*
 
 First deploy a busybox container with an attached volume:
 
