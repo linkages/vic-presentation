@@ -194,14 +194,12 @@ done;
 ## Stateless containers
 @snapend
 
-@snap[midpoint span-100]
 Get IP addresses:
 ```bash
 for i in 1 2 3; do
 	docker container inspect hello${i} | grep IPAddress | tail -n 1;
 done;
 ```
-@snapend
 
 ---
 @snap[north-west]
@@ -234,7 +232,8 @@ done;
 ## Stateful containers
 @snapend
 
-Putting stuff in a volume is "hard".
+Putting stuff in a volume is "hard"
+
 First deploy a busybox container with an attached volume:
 
 ```bash
@@ -253,6 +252,7 @@ docker cp ./local-file truck:/stuff/dest-file
 @snapend
 
 Then delete the busybox container:
+
 ```bash
 docker rm truck
 ```
@@ -263,6 +263,7 @@ docker rm truck
 @snapend
 
 To test that the files are there run this:
+
 ```bash
 docker run -it -v hello1:/stuff --rm busybox /bin/bash
 ```
@@ -273,6 +274,7 @@ docker run -it -v hello1:/stuff --rm busybox /bin/bash
 @snapend
 
 To remove the volume:
+
 ```bash
 docker volume rm hello1
 ```
