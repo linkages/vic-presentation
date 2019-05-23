@@ -1,8 +1,11 @@
-layout: top-left
+@snap[north-west span-33]
 # Introduction to: vSphere Integrated Containers
+@snapend
 
 ---
+@snap[north-west span-33]
 # Author
+@snapend
 - Eli Ben-Shoshan
 - ebs@ufl.edu
 - @linkages
