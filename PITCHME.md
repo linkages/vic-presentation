@@ -194,12 +194,14 @@ done;
 ## Stateless containers
 @snapend
 
+@snap[midpoint span-100]
 Get IP addresses:
 ```bash
 for i in 1 2 3; do
 	docker container inspect hello${i} | grep IPAddress | tail -n 1;
 done;
 ```
+@snapend
 
 ---
 @snap[north-west]
