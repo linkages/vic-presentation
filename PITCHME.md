@@ -3,26 +3,18 @@
 ---
 # Author
 
-@ul
-
 - Eli Ben-Shoshan
 - ebs@ufl.edu
 - @linkages
 - last updated: 2019/05/22
 
-@ulend
-
 ---
-# Contents
-
-
----
-# What is it?
+## What is it?
 
 vSphere integrated containers provides a simple to consume docker environment and docker image registry for vSphere deployments
 
 ---
-# Why?
+## Why?
 
 @ul
 
@@ -33,7 +25,7 @@ vSphere integrated containers provides a simple to consume docker environment an
 @ulend
 
 ---
-# Architecture
+## Architecture
 
 There are 3 parts to the system:
 
@@ -46,15 +38,20 @@ There are 3 parts to the system:
 @olend
 
 ---
-# VIC appliance
+@snap[north-west]
+##VIC appliance
+@snapend
 
+@ul
 - deploys VCH hosts
 - provides a private docker image registry with RBAC based on the concept of Projects
 - can be used by developers to deploy containers graphically but this is not the prefered way to deploy containers
+@ulend
 
 ---
-# VCH
+## VCH
 
+@ul
 - provides a secure docker REST endpoint
 	- uses certificate based authentication
 	- all docker REST calls are done over TLS v1.2
@@ -62,9 +59,10 @@ There are 3 parts to the system:
 - manages volume creation and mapping to container VMs
 - main point of interaction with developers
 - Each developer/group/tenant gets a VCH
+@ulend
 
 ---
-# Container VMs
+## Container VMs
 
 When you deploy a container like this:
 ```
@@ -75,7 +73,7 @@ you get a stateless VM that starts up your container
 Every container get another VM.
 
 ---
-# Networking
+## Networking
 
 There are 2 ways that a VM can communicate with the outside world in VIC
 
@@ -92,11 +90,14 @@ In NAT mode, the container ports are forwarded through the VCH like this:
 ```
 Client <--> VCH:80 <--> Container:8080
 ```
+
+---
+# Nat/Bridge
 When the container makes outbound requests, they are NAT'ed through the VCH
 
 This is the default method that is used when deploying a container
 
-This is _NOT_ the preffered method for container networking
+This is **NOT** the preffered method for container networking
 
 ---
 # Direct
@@ -111,19 +112,21 @@ The network must be explicitly requested when deploying a container like this:
 docker run -d -p 80:80 --network public --name hi-there nginx
 ```
 
+---
+# Direct
+
 To get a list of networks available to use do this:
 
 ```
 docker network ls 
 ```
 
-When a VCH is deployed, the name for this network will be called ```public```. The NAT network will be called ```bridge```.
+When a VCH is deployed, the name for this network will be called ```public```
+The NAT network will be called ```bridge```
 
 ---
 # Demo time!
-
----
-# Three demos
+## Three demos
 
 1) Deploy stateless containers
 2) Deploy stateful containers
