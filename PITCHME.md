@@ -402,7 +402,7 @@ docker-compose up --scale <service>=<number> -d
 ## Build a container
 @snapend
 
-VIC does not support building a container. You will need to do that localy and then push the image to VIC.
+VIC does not support building a container. You will need to do that locally and then push the image to VIC.
 
 ---
 @snap[north-west]
