@@ -8,7 +8,7 @@
 - Eli Ben-Shoshan
 - ebs@ufl.edu
 - @linkages
-- last updated: 2019/05/22
+- last updated: 2019/06/06
 @ulend
 
 ---
@@ -146,15 +146,25 @@ When a VCH is deployed, the name for this network will be called **public**
 The NAT network will be called **bridge**
 
 ---
+@snap[north-west]
+## Limitations
+@snapend
+
+@ul
+- Can not be used to build containers
+- Container startup time is slower than compared to local machine
+@ulend
+
 # Demo time!
 
 ---
-## Three demos
+## Demos
 
 @ol[](false)
 - Deploy stateless containers
 - Deploy stateful containers
 - Deploy containers using docker-compose
+- Build a container and push to VIC registry
 @olend
 
 ---
