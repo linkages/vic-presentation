@@ -448,4 +448,27 @@ docker pull vic.infr.ufl.edu/es-sandbox/powerclicore
 ```
 
 ---
+@snap[north-west]
+## UFIT Limitations
+@snapend
+
+@ul
+- You need to do the rest of the orchestration like:
+  - load balancer
+  - dns
+- No backups of containers or volumes
+  - this might not be a problem for some
+- This is currently NOT a production service
+  - it might never be due to some limitations
+@ulend
+
+---
+@snap[north-west]
+## Resources
+@snapend
+
+Link to the upstream VIC documentation can be found at the VIC page here:
+
+https://vic.infr.ufl.edu:9443
+
 
