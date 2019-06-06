@@ -190,7 +190,7 @@ export COMPOSE_TLS_VERSION=TLSv1_2
 
 Containers by default save any changes to the their filesystems to a layer that is owned by that container.
 
-When that container removed, all the layers are removed as well.
+When that container is removed, all the layers are removed as well.
 
 ---
 @snap[north-west]
