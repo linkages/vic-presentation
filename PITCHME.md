@@ -396,3 +396,55 @@ You can also scale your container if the docker-compose file is written correctl
 ```
 docker-compose up --scale <service>=<number> -d
 ```
+
+---
+@snap[north-west]
+## Build a container
+@snapend
+
+VIC does not support building a container. You will need to do that localy and then push the image to VIC.
+
+---
+@snap[north-west]
+## Build a container
+@snapend
+
+To build a container you need a machine with docker installed and a Dockerfile.
+We are going to use https://github.com/linkages/docker-powercli as an example.
+
+---
+@snap[north-west]
+## Build a container
+@snapend
+
+From our local machine we will use this command to build the image:
+
+```
+docker build -t vic.infr.ufl.edu/es-sandbox/powerclicore
+```
+
+---
+@snap[north-west]
+## Build a container
+@snapend
+
+We then login to the registry and push the image:
+
+```
+docker login vic.infr.ufl.edu
+docker push vic.infr.ufl.edu/es-sandbox/powerclicore
+```
+
+---
+@snap[north-west]
+## Build a container
+@snapend
+
+Using a shell with the environment setup for VCH you use this command to pull the image:
+
+```
+docker pull vic.infr.ufl.edu/es-sandbox/powerclicore
+```
+
+---
+
