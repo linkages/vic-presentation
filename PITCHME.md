@@ -46,6 +46,7 @@ There are 3 parts to the system:
 - deploys VCH hosts
 - provides a private docker image registry with RBAC based on the concept of Projects
 - can be used by developers to deploy containers graphically but this is not the prefered way to deploy containers
+- http://vic.infr.ufl.edu which redirects to https://vic.infr.ufl.edu:9443
 @ulend
 @snapend
 
